@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <stdlib.h>
+main()
+{
+        printf("El llamado system() sirve para ejecutar commandos desde el codigo");
+        printf("1. Se creara un proceso hijo");
+        printf("2. El proceso hijo creara una sesion de screen -> system('screen -S nueva_sesion')");
+        printf("3. El proceso padre accedera a esa sesion -> system('screen -r')");
+
+        int p;
+        p = fork();
+
+        if(p == 0){
+
+          system("screen -S nueva_sesion");
+          printf("Se creo un screen: nueva_sesion");
+        }else{
+          system("screen -r");
+          printf("Entrar el screen creado por el proceso hijo");
+        }
+        
+        puts("Fin \n");
+}
